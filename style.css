@@ -1,0 +1,765 @@
+/* ==================== */
+/* GENEL STILLER */
+/* ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Ana Renk Paleti - Light Mode (Pembemsi) */
+    --primary-color: #ec4899;
+    --primary-dark: #db2777;
+    --secondary-color: #f472b6;
+    --accent-color: #fb7185;
+    
+    /* Nötr Renkler - Light Mode */
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #fdf2f8;
+    --bg-white: #ffffff;
+    --bg-dark: #831843;
+    
+    /* Diğer */
+    --border-color: #fbcfe8;
+    --shadow: 0 4px 6px -1px rgba(236, 72, 153, 0.15), 0 2px 4px -1px rgba(236, 72, 153, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(236, 72, 153, 0.2), 0 4px 6px -2px rgba(236, 72, 153, 0.1);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+/* ==================== */
+/* DARK/LIGHT THEME TOGGLE (CSS Only - Bonus) */
+/* ==================== */
+.theme-toggle-checkbox {
+    display: none;
+}
+
+.theme-toggle-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-light);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid var(--border-color);
+}
+
+.theme-toggle-label:hover {
+    transform: scale(1.1);
+    border-color: var(--primary-color);
+}
+
+/* Light mode - show sun, hide moon */
+.toggle-sun {
+    display: block;
+    font-size: 1.5rem;
+}
+
+.toggle-moon {
+    display: none;
+    font-size: 1.5rem;
+}
+
+/* Dark Mode Styles - When checkbox is checked */
+.theme-toggle-checkbox:checked ~ .header,
+.theme-toggle-checkbox:checked ~ .hero,
+.theme-toggle-checkbox:checked ~ .about,
+.theme-toggle-checkbox:checked ~ .skills,
+.theme-toggle-checkbox:checked ~ .projects,
+.theme-toggle-checkbox:checked ~ .contact,
+.theme-toggle-checkbox:checked ~ .footer {
+    --text-dark: #f9fafb;
+    --text-light: #d1d5db;
+    --bg-light: #1f2937;
+    --bg-white: #111827;
+    --border-color: #374151;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode header background */
+.theme-toggle-checkbox:checked ~ .header {
+    background-color: #111827;
+}
+
+.theme-toggle-checkbox:checked ~ .header .logo {
+    color: var(--primary-color);
+}
+
+.theme-toggle-checkbox:checked ~ .header .nav-list a {
+    color: #f9fafb;
+}
+
+.theme-toggle-checkbox:checked ~ .header .theme-toggle-label {
+    background-color: #374151;
+    border-color: #4b5563;
+}
+
+/* Dark mode - show moon, hide sun */
+.theme-toggle-checkbox:checked ~ .header .toggle-sun {
+    display: none;
+}
+
+.theme-toggle-checkbox:checked ~ .header .toggle-moon {
+    display: block;
+}
+
+/* Dark mode hero */
+.theme-toggle-checkbox:checked ~ .hero {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+}
+
+.theme-toggle-checkbox:checked ~ .hero h1 {
+    color: #f9fafb;
+}
+
+/* Dark mode about */
+.theme-toggle-checkbox:checked ~ .about {
+    background-color: #111827;
+}
+
+.theme-toggle-checkbox:checked ~ .about .about-text p {
+    color: #d1d5db;
+}
+
+/* Dark mode skills */
+.theme-toggle-checkbox:checked ~ .skills {
+    background-color: #1f2937;
+}
+
+.theme-toggle-checkbox:checked ~ .skills .skill-card {
+    background-color: #111827;
+    border-color: #374151;
+}
+
+.theme-toggle-checkbox:checked ~ .skills .skill-card h3 {
+    color: #f9fafb;
+}
+
+.theme-toggle-checkbox:checked ~ .skills .skill-card p {
+    color: #d1d5db;
+}
+
+/* Dark mode projects */
+.theme-toggle-checkbox:checked ~ .projects {
+    background-color: #111827;
+}
+
+.theme-toggle-checkbox:checked ~ .projects .project-card {
+    background-color: #1f2937;
+    border-color: #374151;
+}
+
+.theme-toggle-checkbox:checked ~ .projects .project-info h3 {
+    color: #f9fafb;
+}
+
+.theme-toggle-checkbox:checked ~ .projects .project-info p {
+    color: #d1d5db;
+}
+
+.theme-toggle-checkbox:checked ~ .projects .tag {
+    background-color: #374151;
+    color: #f9a8d4;
+}
+
+/* Dark mode contact */
+.theme-toggle-checkbox:checked ~ .contact {
+    background-color: #1f2937;
+}
+
+.theme-toggle-checkbox:checked ~ .contact .contact-info h3,
+.theme-toggle-checkbox:checked ~ .contact .contact-info h4 {
+    color: #f9fafb;
+}
+
+.theme-toggle-checkbox:checked ~ .contact .contact-info p {
+    color: #d1d5db;
+}
+
+.theme-toggle-checkbox:checked ~ .contact .contact-form {
+    background-color: #111827;
+}
+
+.theme-toggle-checkbox:checked ~ .contact .form-group label {
+    color: #f9fafb;
+}
+
+.theme-toggle-checkbox:checked ~ .contact .form-group input,
+.theme-toggle-checkbox:checked ~ .contact .form-group textarea {
+    background-color: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.theme-toggle-checkbox:checked ~ .contact .form-group input::placeholder,
+.theme-toggle-checkbox:checked ~ .contact .form-group textarea::placeholder {
+    color: #9ca3af;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--text-dark);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* ==================== */
+/* BUTONLAR */
+/* ==================== */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: #ffffff;
+}
+
+/* HOVER EFEKTİ (Zorunlu) */
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(236, 72, 153, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* ==================== */
+/* HEADER (Flexbox Kullanımı - Zorunlu) */
+/* ==================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.header-content {
+    display: flex; /* FLEXBOX */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-list {
+    display: flex; /* FLEXBOX */
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-list a:hover {
+    color: var(--primary-color);
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+}
+
+/* ==================== */
+/* HERO SECTION */
+/* ==================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+    padding-top: 80px;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.highlight {
+    color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+/* ==================== */
+/* ABOUT SECTION (Flexbox) */
+/* ==================== */
+.about {
+    padding: 100px 0;
+    background-color: var(--bg-white);
+}
+
+.about-content {
+    display: flex; /* FLEXBOX */
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.image-placeholder {
+    width: 100%;
+    max-width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-text {
+    flex: 1.5;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* ==================== */
+/* SKILLS SECTION (Grid Kullanımı - Zorunlu) */
+/* ==================== */
+.skills {
+    padding: 100px 0;
+    background-color: var(--bg-light);
+}
+
+.skills-grid {
+    display: grid; /* GRID */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.skill-card {
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+/* HOVER EFEKTİ (Kart üzerinde - Zorunlu) */
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.skill-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.skill-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.skill-card p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+/* ==================== */
+/* PROJECTS SECTION (Grid) */
+/* ==================== */
+.projects {
+    padding: 100px 0;
+    background-color: var(--bg-white);
+}
+
+.projects-grid {
+    display: grid; /* GRID */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--bg-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.project-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-placeholder {
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-info {
+    padding: 25px;
+}
+
+.project-info h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.project-info p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.project-tags {
+    display: flex; /* FLEXBOX */
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.tag {
+    background-color: var(--bg-light);
+    color: var(--primary-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* ==================== */
+/* CONTACT SECTION (Flexbox) */
+/* ==================== */
+.contact {
+    padding: 100px 0;
+    background-color: var(--bg-light);
+}
+
+.contact-content {
+    display: flex; /* FLEXBOX */
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.contact-info p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.social-links h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.social-list {
+    list-style: none;
+    display: flex; /* FLEXBOX */
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.social-list a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+.contact-form {
+    flex: 1.5;
+    background-color: var(--bg-white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    transition: var(--transition);
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ==================== */
+/* FOOTER */
+/* ==================== */
+.footer {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    padding: 30px 0;
+}
+
+.footer-content {
+    display: flex; /* FLEXBOX */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content p {
+    font-size: 0.95rem;
+    color: #9ca3af;
+}
+
+.footer-nav {
+    display: flex; /* FLEXBOX */
+    gap: 25px;
+}
+
+.footer-nav a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.footer-nav a:hover {
+    color: #ffffff;
+}
+
+/* ==================== */
+/* RESPONSIVE TASARIM (Media Query - Zorunlu) */
+/* ==================== */
+@media (max-width: 992px) {
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .about-content,
+    .contact-content {
+        flex-direction: column;
+    }
+    
+    .about-image {
+        text-align: center;
+    }
+    
+    .image-placeholder {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-list {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero {
+        padding-top: 150px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .contact-form {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .social-list {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
