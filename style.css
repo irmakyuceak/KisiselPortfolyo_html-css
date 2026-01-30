@@ -206,6 +206,16 @@ html {
     scroll-behavior: smooth;
 }
 
+section {
+  scroll-margin-top: 110px;
+}
+
+.nav-list a:focus-visible {
+  outline: 3px solid rgba(236, 72, 153, 0.35);
+  outline-offset: 6px;
+  border-radius: 6px;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
