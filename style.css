@@ -653,7 +653,7 @@ body {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.18);
 }
 
 .form-group textarea {
@@ -783,4 +783,9 @@ body {
         flex-direction: column;
         gap: 10px;
     }
+}
+
+.req {
+  color: var(--primary-color);
+  font-weight: 700;
 }
