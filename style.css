@@ -476,6 +476,17 @@ body {
 /* ==================== */
 /* PROJECTS SECTION (Grid) */
 /* ==================== */
+.project-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.02);
+    transition: var(--transition);
+}
+
 .projects {
     padding: 100px 0;
     background-color: var(--bg-white);
